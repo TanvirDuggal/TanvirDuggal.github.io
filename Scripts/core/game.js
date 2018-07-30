@@ -21,7 +21,10 @@
         { id: "engine", src: "/Assets/audio/engine.ogg" },
         { id: "hiyashi", src: "/Assets/images/hiyashi.png" },
         { id: "bullet-fire", src: "/Assets/images/bullet-fire.png" },
-        { id: "hiyashiRington", src: "/Assets/images/hiyashiRington.mp3" }
+        { id: "hiyashiRington", src: "/Assets/audio/hiyashiRington.mp3" },
+        { id: "hiyashiScreen", src: "/Assets/images/hiyashiScreen.png" },
+        { id: "bck", src: "/Assets/audio/bck.wav" },
+        { id: "bulletFire", src: "/Assets/audio/bulletFire.wav" }
     ];
     function Init() {
         console.log("%c Assets Loading...", "font-weight:bold; font-size:20px; color: green;");

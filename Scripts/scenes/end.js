@@ -21,8 +21,9 @@ var scenes;
         // private methods
         // public methods
         End.prototype.Start = function () {
-            this._endLabel = new objects.Label("Game Over!", "60px", "Consolas", "#000000", 320, 240, true);
-            this._backButton = new objects.Button("BackButton", 320, 360, true);
+            this._bck = new createjs.Bitmap("../../Assets/images/ocean.png");
+            this._endLabel = new objects.Label("Game Over!", "60px", "Consolas", "RED", 500, 160, true);
+            this._backButton = new objects.Button("BackButton", 500, 360, true);
             this.Main();
         };
         End.prototype.Update = function () {
@@ -34,10 +35,11 @@ var scenes;
         };
         End.prototype.Main = function () {
             console.log("Started - END SCENE");
+            this.addChild(this._bck);
             this.addChild(this._endLabel);
             this.addChild(this._backButton);
             this._backButton.on("click", function () {
-                managers.Game.CurrentState = config.Scene.PLAY;
+                managers.Game.CurrentState = config.Scene.START;
             }, this);
         };
         return End;

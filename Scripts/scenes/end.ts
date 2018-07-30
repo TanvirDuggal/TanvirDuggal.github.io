@@ -3,11 +3,11 @@ module scenes {
         // member variables
         private _endLabel: objects.Label;
         private _backButton: objects.Button;
-
+        private _bck: createjs.Bitmap;
         // constructors
         constructor() {
             super();
-
+    
             this.Start();
         }
 
@@ -15,9 +15,10 @@ module scenes {
 
         // public methods
         public Start():void {
+            this._bck = new createjs.Bitmap("../../Assets/images/ocean.png");
 
-            this._endLabel = new objects.Label("Game Over!", "60px", "Consolas", "#000000", 320, 240, true);
-            this._backButton = new objects.Button("BackButton", 320, 360, true);
+            this._endLabel = new objects.Label("Game Over!", "60px", "Consolas", "RED", 500, 160, true);
+            this._backButton = new objects.Button("BackButton", 500, 360, true);
 
             this.Main();
         }
@@ -36,11 +37,13 @@ module scenes {
 
         public Main():void {
             console.log("Started - END SCENE");
+            this.addChild(this._bck);
             this.addChild(this._endLabel);
             this.addChild(this._backButton);
-
+            
+            
             this._backButton.on("click", function(){
-                managers.Game.CurrentState = config.Scene.PLAY;
+                managers.Game.CurrentState = config.Scene.START;
             }, this);
         }
     }

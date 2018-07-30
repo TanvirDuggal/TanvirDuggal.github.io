@@ -21,13 +21,13 @@ var objects;
         // private methods
         Ocean.prototype._checkBounds = function () {
             // check the top boundary
-            if (this.x <= -500) {
+            if (this.x <= -1894.66667) {
                 this.Reset();
             }
         };
         // public methods
         Ocean.prototype.Start = function () {
-            this._verticalSpeed = 3; // the ocean will move down 5ppf
+            this._verticalSpeed = 6; // the ocean will move down 5ppf
             this.Reset();
         };
         Ocean.prototype.Update = function () {

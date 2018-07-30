@@ -30,6 +30,11 @@ var scenes;
             this._plane = new objects.Plane();
             this._ocean = new objects.Ocean();
             this._island = new objects.Island();
+            this._island = new objects.Island();
+            this._island = new objects.Island();
+            this.backGroundMusic = createjs.Sound.play("bck");
+            this.backGroundMusic.loop = -1;
+            this.backGroundMusic.volume = 0.1;
             //  this._cloudNum = 3;
             // create an empty Array List-like object of clouds
             //   this._clouds = new Array<objects.Cloud>();
@@ -39,6 +44,7 @@ var scenes;
         Play.prototype.Update = function () {
             this._plane.Update();
             this._ocean.Update();
+            this._island.Update();
             this._island.Update();
             managers.Collision.check(this._plane, this._island);
             /*    this._clouds.forEach(cloud => {

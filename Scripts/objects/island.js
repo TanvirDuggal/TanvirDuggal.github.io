@@ -22,6 +22,11 @@ var objects;
         Island.prototype._checkBounds = function () {
             // check the bottom boundary
             if (this.x <= (0)) {
+                //   alert("13");
+                this.bulletShoot = createjs.Sound.play("bulletFire");
+                this.bulletShoot.loop = 1;
+                this.bulletShoot.volume = 0.8;
+                //   this.bulletShoot.destroy();   
                 this.Reset();
             }
         };
@@ -38,7 +43,7 @@ var objects;
             this.y = Math.floor((Math.random() * (400 - 200) + 200));
             // alert(this.height + " > " + this.halfHeight);
             //this.y = 400; 
-            this.x = 800;
+            this.x = 900;
         };
         return Island;
     }(objects.GameObject));

@@ -12,7 +12,6 @@ var scenes;
 (function (scenes) {
     var Start = /** @class */ (function (_super) {
         __extends(Start, _super);
-        //private _hiyashi: objects
         // constructors
         function Start() {
             var _this = _super.call(this) || this;
@@ -22,8 +21,10 @@ var scenes;
         // private methods
         // public methods
         Start.prototype.Start = function () {
-            this._welcomeLabel = new objects.Label("Welcome!", "60px", "Consolas", "#000000", 320, 240, true);
-            this._startButton = new objects.Button("StartButton", 320, 360, true);
+            this._bck = new createjs.Bitmap("../../Assets/images/ocean.png");
+            this._welcomeLabel = new objects.Label("THE GIRL WHO HAS NO NAME", "50px", "Consolas", "RED", 550, 30, true);
+            this._startButton = new objects.Button("StartButton", 500, 360, true);
+            this._hiyashi = new createjs.Bitmap("../../Assets/images/hiyashiScreen.png");
             this.Main();
         };
         Start.prototype.Update = function () {
@@ -35,8 +36,10 @@ var scenes;
         };
         Start.prototype.Main = function () {
             console.log("Started - START SCENE");
+            this.addChild(this._bck);
             this.addChild(this._welcomeLabel);
             this.addChild(this._startButton);
+            this.addChild(this._hiyashi);
             this._startButton.on("click", function () {
                 managers.Game.CurrentState = config.Scene.PLAY;
             }, this);

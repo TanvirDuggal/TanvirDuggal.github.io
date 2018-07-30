@@ -13,14 +13,14 @@ module objects {
         // private methods
         private _checkBounds():void {
             // check the top boundary
-            if(this.x <= -500) {
+            if(this.x <= -1894.66667) {
                 this.Reset();
             }
         }
 
          // public methods
          public Start():void {
-             this._verticalSpeed = 3; // the ocean will move down 5ppf
+             this._verticalSpeed = 6; // the ocean will move down 5ppf
 
             this.Reset();
         }
