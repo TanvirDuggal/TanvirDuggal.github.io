@@ -11,7 +11,7 @@ var managers;
                     object2.isColliding = true;
                     switch (object2.name) {
                         case "bullet-fire":
-                            createjs.Sound.play("thunder");
+                            createjs.Sound.play("hit");
                             if (managers.Game.ScoreBoard.Lives == 1) {
                                 managers.Game.CurrentState = config.Scene.END;
                                 return true;
@@ -22,7 +22,7 @@ var managers;
                             object2.Reset();
                             break;
                         case "cloud":
-                            createjs.Sound.play("thunder");
+                            createjs.Sound.play("hit");
                             if (managers.Game.ScoreBoard.Lives == 1) {
                                 managers.Game.CurrentState = config.Scene.END;
                                 return true;

@@ -5,6 +5,7 @@ module scenes {
         private _env:objects.Environment;
         private _bullet:objects.Bullet;
         public  backGroundMusic:createjs.AbstractSoundInstance;
+        
         private _cloudNum:number;
         private _clouds:objects.Cloud[];
         
@@ -18,6 +19,7 @@ module scenes {
         private _buildClouds():void {
             for (let count = 0; count < this._cloudNum; count++) {
                 this._clouds.push(new objects.Cloud());
+
                 this._clouds[count] = new objects.Cloud();
 
             }
@@ -38,7 +40,7 @@ module scenes {
 
               this._cloudNum = 3;
            //  create an empty Array List-like object of clouds
-            this._clouds = new Array<objects.Cloud>();
+               this._clouds = new Array<objects.Cloud>();
              this._buildClouds();
 
             this.Main();

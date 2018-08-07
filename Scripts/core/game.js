@@ -31,7 +31,9 @@
         { id: "hiyashiScreen", src: "/Assets/images/hiyashiScreen.png" },
         { id: "bck", src: "/Assets/audio/bck.wav" },
         { id: "bulletFire", src: "/Assets/audio/bulletFire.wav" },
-        { id: "gameOver", src: "/Assets/audio/GameOver.mp3" }
+        { id: "gameOver", src: "/Assets/audio/GameOver.mp3" },
+        { id: "fireball", src: "/Assets/audio/fireball.wav" },
+        { id: "hit", src: "/Assets/audio/hit.wav" }
     ];
     function Init() {
         console.log("%c Assets Loading...", "font-weight:bold; font-size:20px; color: green;");

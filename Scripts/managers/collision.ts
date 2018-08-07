@@ -15,7 +15,7 @@ module managers
                     switch(object2.name) 
                     {
                         case "bullet-fire":
-                            createjs.Sound.play("thunder");
+                            createjs.Sound.play("hit");
                             
                             if(managers.Game.ScoreBoard.Lives == 1)
                             {
@@ -31,7 +31,7 @@ module managers
                             break;
                             
                         case "cloud":
-                            createjs.Sound.play("thunder");
+                            createjs.Sound.play("hit");
                             
                             if(managers.Game.ScoreBoard.Lives == 1)
                             {

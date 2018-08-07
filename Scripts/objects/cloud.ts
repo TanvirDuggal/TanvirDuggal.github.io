@@ -3,7 +3,7 @@ module objects {
         // member variables
         private _verticalSpeed:number;
         private _horizontalSpeed:number;
-
+        private fball:createjs.AbstractSoundInstance;
         // constructors
         constructor() {
             super("cloud");
@@ -35,6 +35,9 @@ module objects {
         }
 
         public Reset():void {
+            this.fball = createjs.Sound.play("fireball");
+            this.fball.loop = 0;
+            this.fball.volume = 0.4;
             this._verticalSpeed = Math.floor(Math.random() * 5) + 5;
             this._horizontalSpeed = Math.floor(Math.random() * 4) - 2;
             this.x = Math.floor(Math.random() * (config.Screen.WIDTH - this.width)) + this.halfWidth;

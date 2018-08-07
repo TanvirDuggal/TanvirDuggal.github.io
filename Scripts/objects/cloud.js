@@ -35,6 +35,9 @@ var objects;
             this._checkBounds();
         };
         Cloud.prototype.Reset = function () {
+            this.fball = createjs.Sound.play("fireball");
+            this.fball.loop = 0;
+            this.fball.volume = 0.4;
             this._verticalSpeed = Math.floor(Math.random() * 5) + 5;
             this._horizontalSpeed = Math.floor(Math.random() * 4) - 2;
             this.x = Math.floor(Math.random() * (config.Screen.WIDTH - this.width)) + this.halfWidth;

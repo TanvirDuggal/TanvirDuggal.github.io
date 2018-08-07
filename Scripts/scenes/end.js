@@ -22,11 +22,11 @@ var scenes;
         // public methods
         End.prototype.Start = function () {
             this._bck = new createjs.Bitmap("../../Assets/images/ocean.png");
-            this._endLabel = new objects.Label("Game Over!", "60px", "Consolas", "Black", 500, 160, true);
-            this._backButton = new objects.Button("BackButton", 500, 325, true);
+            this._endLabel = new objects.Label("Game Over!", "60px", "Consolas", "Black", 400, 160, true);
+            this._backButton = new objects.Button("BackButton", 400, 325, true);
             this.backGroundMusic = createjs.Sound.play("gameOver");
             this.backGroundMusic.loop = 0;
-            this.backGroundMusic.volume = 0.2;
+            this.backGroundMusic.volume = 0.8;
             this.Main();
         };
         End.prototype.Update = function () {

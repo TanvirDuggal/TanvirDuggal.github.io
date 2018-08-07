@@ -18,8 +18,8 @@ module objects {
 
              //   alert("13");
                 this.bulletShoot = createjs.Sound.play("bulletFire");
-                this.bulletShoot.loop = 1;
-                this.bulletShoot.volume = 0.8;
+                this.bulletShoot.loop = 0;
+                this.bulletShoot.volume = 0.5;
              //   this.bulletShoot.destroy();   
                 managers.Game.ScoreBoard.Score += 100;
                 if(managers.Game.ScoreBoard.Score %1000 == 0)
