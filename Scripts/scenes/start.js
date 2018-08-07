@@ -22,8 +22,10 @@ var scenes;
         // public methods
         Start.prototype.Start = function () {
             this._bck = new createjs.Bitmap("../../Assets/images/ocean.png");
-            this._welcomeLabel = new objects.Label("THE GIRL WHO HAS NO NAME", "50px", "Consolas", "RED", 550, 30, true);
-            this._startButton = new objects.Button("StartButton", 500, 360, true);
+            this._welcomeLabel = new objects.Label("THE GIRL WHO HAS NO NAME", "50px", "Consolas", "black", 550, 30, true);
+            this._startButton = new objects.Button("PlayBtn", 500, 280, true);
+            this._instructionButton = new objects.Button("InstructionButton", 350, 280, true);
+            this._settingsButton = new objects.Button("SettingsButton", 650, 280, true);
             this._hiyashi = new createjs.Bitmap("../../Assets/images/hiyashiScreen.png");
             this.Main();
         };
@@ -39,9 +41,17 @@ var scenes;
             this.addChild(this._bck);
             this.addChild(this._welcomeLabel);
             this.addChild(this._startButton);
+            this.addChild(this._instructionButton);
+            this.addChild(this._settingsButton);
             this.addChild(this._hiyashi);
             this._startButton.on("click", function () {
                 managers.Game.CurrentState = config.Scene.PLAY;
+            }, this);
+            this._instructionButton.on("click", function () {
+                managers.Game.CurrentState = config.Scene.INSTRUCTIONS;
+            }, this);
+            this._settingsButton.on("click", function () {
+                managers.Game.CurrentState = config.Scene.SETTINGS;
             }, this);
         };
         return Start;

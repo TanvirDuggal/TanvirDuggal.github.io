@@ -10,17 +10,17 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var Plane = /** @class */ (function (_super) {
-        __extends(Plane, _super);
+    var Hiyashi = /** @class */ (function (_super) {
+        __extends(Hiyashi, _super);
         // member variables
         // constructors
-        function Plane() {
+        function Hiyashi() {
             var _this = _super.call(this, "hiyashi") || this;
             _this.Start();
             return _this;
         }
         // private methods
-        Plane.prototype._checkBounds = function () {
+        Hiyashi.prototype._checkBounds = function () {
             // check the right boundary
             if (this.x > (config.Screen.HALF_WIDTH - this.halfWidth)) {
                 this.x = config.Screen.HALF_WIDTH - this.halfWidth;
@@ -31,20 +31,20 @@ var objects;
             }
         };
         // public methods
-        Plane.prototype.Start = function () {
+        Hiyashi.prototype.Start = function () {
             this.regX = this.halfWidth;
             this.regY = this.halfHeight;
             this.y = 370;
             this.x = 100;
         };
-        Plane.prototype.Update = function () {
+        Hiyashi.prototype.Update = function () {
             this.x = managers.Game.Stage.mouseX;
             this.Move();
             this._checkBounds();
         };
-        Plane.prototype.Reset = function () {
+        Hiyashi.prototype.Reset = function () {
         };
-        Plane.prototype.Move = function () {
+        Hiyashi.prototype.Move = function () {
             if (managers.Game.keyboardManager.jump) {
                 this.y = 270;
             }
@@ -52,8 +52,8 @@ var objects;
                 this.y = 370;
             }
         };
-        return Plane;
+        return Hiyashi;
     }(objects.GameObject));
-    objects.Plane = Plane;
+    objects.Hiyashi = Hiyashi;
 })(objects || (objects = {}));
 //# sourceMappingURL=plane.js.map

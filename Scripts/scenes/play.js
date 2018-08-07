@@ -18,39 +18,39 @@ var scenes;
             _this.Start();
             return _this;
         }
-        // private methods
-        // private _buildClouds():void {
-        //   for (let count = 0; count < this._cloudNum; count++) {
-        //     this._clouds.push(new objects.Cloud());
-        //this._clouds[count] = new objects.Cloud();
-        // }
-        // }
+        Play.prototype._buildClouds = function () {
+            for (var count = 0; count < this._cloudNum; count++) {
+                this._clouds.push(new objects.Cloud());
+                this._clouds[count] = new objects.Cloud();
+            }
+        };
         // public methods
         Play.prototype.Start = function () {
-            this._plane = new objects.Plane();
-            this._ocean = new objects.Ocean();
-            this._island = new objects.Island();
-            this._island = new objects.Island();
-            this._island = new objects.Island();
+            this._hiyashi = new objects.Hiyashi();
+            this._env = new objects.Environment();
+            this._bullet = new objects.Bullet();
+            this._bullet = new objects.Bullet();
+            this._bullet = new objects.Bullet();
             this.backGroundMusic = createjs.Sound.play("bck");
             this.backGroundMusic.loop = -1;
             this.backGroundMusic.volume = 0.1;
-            //  this._cloudNum = 3;
-            // create an empty Array List-like object of clouds
-            //   this._clouds = new Array<objects.Cloud>();
-            //  this._buildClouds();
+            this._cloudNum = 3;
+            //  create an empty Array List-like object of clouds
+            this._clouds = new Array();
+            this._buildClouds();
             this.Main();
         };
         Play.prototype.Update = function () {
-            this._plane.Update();
-            this._ocean.Update();
-            this._island.Update();
-            this._island.Update();
-            managers.Collision.check(this._plane, this._island);
-            /*    this._clouds.forEach(cloud => {
-                    cloud.Update();
-                    managers.Collision.check(this._plane, cloud);
-                });*/
+            var _this = this;
+            this._hiyashi.Update();
+            this._env.Update();
+            this._bullet.Update();
+            this._bullet.Update();
+            managers.Collision.check(this._hiyashi, this._bullet);
+            this._clouds.forEach(function (cloud) {
+                cloud.Update();
+                managers.Collision.check(_this._hiyashi, cloud);
+            });
         };
         Play.prototype.Reset = function () {
         };
@@ -60,15 +60,18 @@ var scenes;
         Play.prototype.Main = function () {
             console.log("Started - PLAY SCENE");
             // add the Ocean object to the scene
-            this.addChild(this._ocean);
+            this.addChild(this._env);
             // add the Island object to the scene
-            this.addChild(this._island);
+            this.addChild(this._bullet);
             // add the Plane object to the scene
-            this.addChild(this._plane);
+            this.addChild(this._hiyashi);
+            this.addChild(managers.Game.ScoreBoard.LivesLabel);
+            this.addChild(managers.Game.ScoreBoard.ScoreLabel);
             // add the Cloud(s) to the scene
-            //  for (const cloud of this._clouds) {
-            //    this.addChild(cloud);
-            //  }
+            for (var _i = 0, _a = this._clouds; _i < _a.length; _i++) {
+                var cloud = _a[_i];
+                this.addChild(cloud);
+            }
         };
         return Play;
     }(objects.Scene));

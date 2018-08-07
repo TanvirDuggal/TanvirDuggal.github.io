@@ -10,35 +10,35 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var Ocean = /** @class */ (function (_super) {
-        __extends(Ocean, _super);
+    var Environment = /** @class */ (function (_super) {
+        __extends(Environment, _super);
         // constructors
-        function Ocean() {
+        function Environment() {
             var _this = _super.call(this, managers.Game.AssetManager.getResult("ocean")) || this;
             _this.Start();
             return _this;
         }
         // private methods
-        Ocean.prototype._checkBounds = function () {
+        Environment.prototype._checkBounds = function () {
             // check the top boundary
             if (this.x <= -1894.66667) {
                 this.Reset();
             }
         };
         // public methods
-        Ocean.prototype.Start = function () {
+        Environment.prototype.Start = function () {
             this._verticalSpeed = 6; // the ocean will move down 5ppf
             this.Reset();
         };
-        Ocean.prototype.Update = function () {
+        Environment.prototype.Update = function () {
             this.x -= this._verticalSpeed;
             this._checkBounds();
         };
-        Ocean.prototype.Reset = function () {
+        Environment.prototype.Reset = function () {
             this.x = 0;
         };
-        return Ocean;
+        return Environment;
     }(createjs.Bitmap));
-    objects.Ocean = Ocean;
+    objects.Environment = Environment;
 })(objects || (objects = {}));
 //# sourceMappingURL=ocean.js.map

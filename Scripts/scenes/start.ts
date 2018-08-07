@@ -3,6 +3,8 @@ module scenes {
         // member variables
         private _welcomeLabel: objects.Label;
         private _startButton: objects.Button;
+        private _instructionButton: objects.Button;
+        private _settingsButton: objects.Button;
         private _hiyashi: createjs.Bitmap;
         private _bck: createjs.Bitmap;
         
@@ -21,8 +23,10 @@ module scenes {
         {
             this._bck = new createjs.Bitmap("../../Assets/images/ocean.png");
             
-            this._welcomeLabel = new objects.Label("THE GIRL WHO HAS NO NAME", "50px", "Consolas", "RED", 550, 30, true);
-            this._startButton = new objects.Button("StartButton", 500, 360, true);
+            this._welcomeLabel = new objects.Label("THE GIRL WHO HAS NO NAME", "50px", "Consolas", "black", 550, 30, true);
+            this._startButton = new objects.Button("PlayBtn", 500, 280, true);
+            this._instructionButton = new objects.Button("InstructionButton", 350, 280, true);
+            this._settingsButton = new objects.Button("SettingsButton", 650, 280, true);
             
             this._hiyashi = new createjs.Bitmap("../../Assets/images/hiyashiScreen.png");
             this.Main();
@@ -46,10 +50,18 @@ module scenes {
             
             this.addChild(this._welcomeLabel);
             this.addChild(this._startButton);
+            this.addChild(this._instructionButton);
+            this.addChild(this._settingsButton);
             this.addChild(this._hiyashi);
             
             this._startButton.on("click", function(){
                 managers.Game.CurrentState = config.Scene.PLAY;
+            }, this);
+            this._instructionButton.on("click", function(){
+                managers.Game.CurrentState = config.Scene.INSTRUCTIONS;
+            }, this);
+            this._settingsButton.on("click", function(){
+                managers.Game.CurrentState = config.Scene.SETTINGS;
             }, this);
         }
     }

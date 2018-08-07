@@ -8,23 +8,35 @@ var managers;
             var P2 = new math.Vec2(object2.x, object2.y);
             if (math.Vec2.Distance(P1, P2) < (object1.halfHeight + object2.halfHeight)) {
                 if (!object2.isColliding) {
-                    managers.Game.CurrentState = config.Scene.END;
-                    return true;
-                    /*    object2.isColliding = true;
-                        switch(object2.name) {
-                            case "island":
-                            createjs.Sound.play("yay");
-                            break;
-    
-                            case "cloud":
+                    object2.isColliding = true;
+                    switch (object2.name) {
+                        case "bullet-fire":
                             createjs.Sound.play("thunder");
+                            if (managers.Game.ScoreBoard.Lives == 1) {
+                                managers.Game.CurrentState = config.Scene.END;
+                                return true;
+                            }
+                            else {
+                                managers.Game.ScoreBoard.Lives -= 1;
+                            }
+                            object2.Reset();
                             break;
-                        }
-                    }*/
+                        case "cloud":
+                            createjs.Sound.play("thunder");
+                            if (managers.Game.ScoreBoard.Lives == 1) {
+                                managers.Game.CurrentState = config.Scene.END;
+                                return true;
+                            }
+                            else {
+                                managers.Game.ScoreBoard.Lives -= 1;
+                            }
+                            object2.Reset();
+                            break;
+                    }
                 }
-                else {
-                    object2.isColliding = false;
-                }
+            }
+            else {
+                object2.isColliding = false;
             }
         };
         return Collision;

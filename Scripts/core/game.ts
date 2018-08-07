@@ -7,10 +7,19 @@
     let AssetManager: createjs.LoadQueue;
     let CurrentScene: objects.Scene;
     let CurrentState: config.Scene;
+    
+    let ScoreBoard: managers.ScoreBoard;
     let keyboardManager:managers.Keyboard;
+
+
 
     let Manifest = [
         {id: "StartButton", src:"/Assets/images/StartButton.png"},
+        {id: "InstructionButton", src:"/Assets/images/InstructionButton.png"},
+        {id: "SettingsButton", src:"/Assets/images/SettingsButton.png"},
+        {id: "SoundOn", src:"/Assets/images/SoundOn.png"},
+        {id: "SoundOff", src:"/Assets/images/SoundOff.png"},
+        {id: "PlayBtn", src:"/Assets/images/play.png"},
         {id: "NextButton", src:"/Assets/images/NextButton.png"},
         {id: "BackButton", src:"/Assets/images/BackButton.png"},
         {id: "plane", src:"/Assets/images/plane.png"},
@@ -25,7 +34,8 @@
         {id: "hiyashiRington", src:"/Assets/audio/hiyashiRington.mp3"},
         {id: "hiyashiScreen", src:"/Assets/images/hiyashiScreen.png"},
         {id: "bck", src:"/Assets/audio/bck.wav"},
-        {id: "bulletFire", src:"/Assets/audio/bulletFire.wav"}
+        {id: "bulletFire", src:"/Assets/audio/bulletFire.wav"},
+        {id: "gameOver", src:"/Assets/audio/GameOver.mp3"}
     ]
 
 
@@ -55,6 +65,8 @@
         keyboardManager= new managers.Keyboard();
         managers.Game.keyboardManager = keyboardManager;
 
+        ScoreBoard = new managers.ScoreBoard;
+        managers.Game.ScoreBoard = ScoreBoard;
         // This is where all the magic happens
         Main();
     }
@@ -86,6 +98,15 @@
             case config.Scene.PLAY:
             CurrentScene = new scenes.Play();
             break;
+
+            case config.Scene.SETTINGS:
+            CurrentScene = new scenes.Settings();
+            break;
+
+            case config.Scene.INSTRUCTIONS:
+            CurrentScene = new scenes.Instructions();
+            break;
+
 
             case config.Scene.END:
             CurrentScene = new scenes.End();

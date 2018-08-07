@@ -4,6 +4,7 @@ module scenes {
         private _endLabel: objects.Label;
         private _backButton: objects.Button;
         private _bck: createjs.Bitmap;
+        public backGroundMusic:createjs.AbstractSoundInstance;
         // constructors
         constructor() {
             super();
@@ -17,8 +18,13 @@ module scenes {
         public Start():void {
             this._bck = new createjs.Bitmap("../../Assets/images/ocean.png");
 
-            this._endLabel = new objects.Label("Game Over!", "60px", "Consolas", "RED", 500, 160, true);
-            this._backButton = new objects.Button("BackButton", 500, 360, true);
+            this._endLabel = new objects.Label("Game Over!", "60px", "Consolas", "Black", 500, 160, true);
+            this._backButton = new objects.Button("BackButton", 500, 325 , true);
+            
+            this.backGroundMusic = createjs.Sound.play("gameOver");
+            this.backGroundMusic.loop = 0;
+            this.backGroundMusic.volume = 0.2;
+
 
             this.Main();
         }
@@ -42,7 +48,11 @@ module scenes {
             this.addChild(this._backButton);
             
             
-            this._backButton.on("click", function(){
+            this._backButton.on("click", function()
+            {
+                managers.Game.ScoreBoard.Score = 0;
+                managers.Game.ScoreBoard.Lives = 4;
+                    this.backGroundMusic.stop();
                 managers.Game.CurrentState = config.Scene.START;
             }, this);
         }

@@ -1,5 +1,5 @@
 module objects {
-    export class Island extends objects.GameObject {
+    export class Bullet extends objects.GameObject {
         // member variables
         private _verticalSpeed:number;
         private bulletShoot:createjs.AbstractSoundInstance;
@@ -15,11 +15,17 @@ module objects {
             // check the bottom boundary
             if(this.x <= (0)) 
             {
+
              //   alert("13");
                 this.bulletShoot = createjs.Sound.play("bulletFire");
                 this.bulletShoot.loop = 1;
                 this.bulletShoot.volume = 0.8;
              //   this.bulletShoot.destroy();   
+                managers.Game.ScoreBoard.Score += 100;
+                if(managers.Game.ScoreBoard.Score %1000 == 0)
+                {
+                    managers.Game.ScoreBoard.Lives += 1;
+                }
                 this.Reset();
             }
 

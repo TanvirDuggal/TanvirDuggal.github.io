@@ -22,8 +22,11 @@ var scenes;
         // public methods
         End.prototype.Start = function () {
             this._bck = new createjs.Bitmap("../../Assets/images/ocean.png");
-            this._endLabel = new objects.Label("Game Over!", "60px", "Consolas", "RED", 500, 160, true);
-            this._backButton = new objects.Button("BackButton", 500, 360, true);
+            this._endLabel = new objects.Label("Game Over!", "60px", "Consolas", "Black", 500, 160, true);
+            this._backButton = new objects.Button("BackButton", 500, 325, true);
+            this.backGroundMusic = createjs.Sound.play("gameOver");
+            this.backGroundMusic.loop = 0;
+            this.backGroundMusic.volume = 0.2;
             this.Main();
         };
         End.prototype.Update = function () {
@@ -39,6 +42,9 @@ var scenes;
             this.addChild(this._endLabel);
             this.addChild(this._backButton);
             this._backButton.on("click", function () {
+                managers.Game.ScoreBoard.Score = 0;
+                managers.Game.ScoreBoard.Lives = 4;
+                this.backGroundMusic.stop();
                 managers.Game.CurrentState = config.Scene.START;
             }, this);
         };
